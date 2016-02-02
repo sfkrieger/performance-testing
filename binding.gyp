@@ -1,8 +1,8 @@
 {
   "targets": [
     {
-      "target_name": "addon",
-      "sources": [ "addon.cc" ],
+      "target_name": "nadd",
+      "sources": [ "nadd.cc" ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")"
       ]
