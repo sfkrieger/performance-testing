@@ -7,6 +7,9 @@ random doubles in javascript vs c++.
 
 It also checks marshalling time for making the c++ library call.
 
-I consistently have found js outperforming the c++ addons in terms of speed.
+I consistently have found js outperforming c++'s speed.
+
+At what point does writing an addon improve performance? Or does marshalling 
+speed generally trump processing when trying to manipulate JS objects in C++.
 
 Why?
