@@ -4,7 +4,7 @@ var jsAdd = require("./add.js");
 var helpers = require("./helpers.js");
 
 var NO_TIMES = 1000000;
-var ARR_SIZE = 100000;
+var ARR_SIZE = 10000;
 //console.log('This should be eight:', addon.add(3, 5));
 //console.log('This should be eight -- no nan:', add.add(3, 5));
 
