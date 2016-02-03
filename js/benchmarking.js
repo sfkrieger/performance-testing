@@ -3,8 +3,8 @@ var add = require('bindings')('add.node');
 var jsAdd = require("./add.js");
 var helpers = require("./helpers.js");
 
-var NO_TIMES = 1000000;
-var ARR_SIZE = 10000;
+var NO_TIMES = 100000;
+var ARR_SIZE = 1000;
 //console.log('This should be eight:', addon.add(3, 5));
 //console.log('This should be eight -- no nan:', add.add(3, 5));
 
@@ -90,6 +90,39 @@ benchmarkSort = function(){
 	
 }
 
+justCreate = function(){
+	var obj = add.create_object();
+	var props = Object.getOwnPropertyNames(obj);
+	for(var i = 0; i < props.length; i++)
+		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
+	
+	obj = helpers.create_object();
+	props = Object.getOwnPropertyNames(obj);
+	for(var i = 0; i < props.length; i++)
+		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
+}
+
+benchmarkCreate = function(){
+	var cres = benchmark(add.create_object);
+	var jsres = benchmark(helpers.create_object);
+	return {
+		c: cres,
+		js: jsres
+	};
+}
+
+benchmarkOptimization = function(){
+
+	var jsregular = benchmark(helpers.create_object)
+	var js = benchmark(helpers.create_object_passing);
+	var jsvolley = benchmark(helpers.create_object_pcompare);
+	
+	return {
+		jsregular: jsregular,
+		js: js,
+		jsvolley: jsvolley
+	};
+}
 toConsole = function(results){
 	console.log("JS time: %s msec", results.js);
 	console.log("C time: %s msec", results.c);
@@ -103,5 +136,9 @@ module.exports = {
 	toConsole : toConsole,
 	benchmarkEmptyAdd : benchmarkEmptyAdd,
 	benchmarkAdd : benchmarkAdd,
-	benchmarkSort : benchmarkSort
+	benchmarkSort : benchmarkSort,
+	benchmarkCreate : benchmarkCreate,
+	benchmarkOptimization : benchmarkOptimization,
+	justCreate: justCreate
+	
 };

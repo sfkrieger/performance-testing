@@ -2,9 +2,14 @@
 #include <vector>
 #include <stdlib.h>
 #include <iostream>
+#include <string>
 
 using namespace std;
 using namespace v8;
+static char alphanum[] =
+        "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+static const char supercal[] =
+		"supercalafragilisticexpealidotiouseventhoughthesoundofthisis";
 
 int compare (const void * a, const void * b)
 {
@@ -72,6 +77,31 @@ void Sort(const FunctionCallbackInfo<Value>& args) {
 
 }
 
+void CreateObject(const FunctionCallbackInfo<Value>& args){
+	  Isolate* isolate = args.GetIsolate();
+	  // Creates a new Object on the V8 heap
+	  Local<Context> context = isolate->GetCurrentContext();
+	  Local<Object> obj = Object::New(isolate);
+
+	  Local<Context> creationContext = obj->CreationContext();
+
+//	  printf("It is %i that the creation and local context of the isolate are the same", (context == creationContext));
+
+	  for(int i = 0; i < 50; i++){
+//		  string s = std::to_string(i);
+//		  char const *pchar = s.c_str();
+//
+//		  std::ostringstream ss;
+//		  ss << i;
+
+		  char *p = alphanum + i;
+		  obj->CreateDataProperty(creationContext, String::NewFromUtf8(isolate, p), Number::New(isolate, i));
+	  }
+
+//	  obj->CreationContext();
+	  args.GetReturnValue().Set(obj);
+}
+
 //void Sort(const FunctionCallbackInfo<Value>& args) {
 //	  Isolate* isolate = Isolate::GetCurrent();
 //	  HandleScope scope(isolate);
@@ -102,6 +132,7 @@ void Init(Handle<Object> exports) {
   NODE_SET_METHOD(exports, "add", Add);
   NODE_SET_METHOD(exports, "add_empty", Add);
   NODE_SET_METHOD(exports, "sort", Sort);
+  NODE_SET_METHOD(exports, "create_object", CreateObject);
 }
 
 NODE_MODULE(add, Init)
