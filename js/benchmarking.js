@@ -90,26 +90,26 @@ benchmarkSort = function(){
 	
 }
 
-justCreate = function(){
-	var obj = add.create_object();
-	var props = Object.getOwnPropertyNames(obj);
-	for(var i = 0; i < props.length; i++)
-		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
-	
-	obj = helpers.create_object();
-	props = Object.getOwnPropertyNames(obj);
-	for(var i = 0; i < props.length; i++)
-		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
-}
-
-benchmarkCreate = function(){
-	var cres = benchmark(add.create_object);
-	var jsres = benchmark(helpers.create_object);
-	return {
-		c: cres,
-		js: jsres
-	};
-}
+//justCreate = function(){
+//	var obj = add.create_object();
+//	var props = Object.getOwnPropertyNames(obj);
+//	for(var i = 0; i < props.length; i++)
+//		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
+//	
+//	obj = helpers.create_object();
+//	props = Object.getOwnPropertyNames(obj);
+//	for(var i = 0; i < props.length; i++)
+//		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
+//}
+//
+//benchmarkCreate = function(){
+//	var cres = benchmark(add.create_object);
+//	var jsres = benchmark(helpers.create_object);
+//	return {
+//		c: cres,
+//		js: jsres
+//	};
+//}
 
 benchmarkOptimization = function(){
 
@@ -137,8 +137,8 @@ module.exports = {
 	benchmarkEmptyAdd : benchmarkEmptyAdd,
 	benchmarkAdd : benchmarkAdd,
 	benchmarkSort : benchmarkSort,
-	benchmarkCreate : benchmarkCreate,
-	benchmarkOptimization : benchmarkOptimization,
-	justCreate: justCreate
+//	benchmarkCreate : benchmarkCreate,
+	benchmarkOptimization : benchmarkOptimization
+//	justCreate: justCreate
 	
 };
