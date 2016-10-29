@@ -1,0 +1,243 @@
+Statistical profiling result from isolate-0x101805000-v8.log, (46 ticks, 1 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+      3    6.5%          /usr/local/bin/node
+      1    2.2%          /usr/lib/system/libsystem_pthread.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+
+ [C++]:
+   ticks  total  nonlib   name
+     10   21.7%   23.8%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+      8   17.4%   19.0%  ___mkfifo_extended
+      2    4.3%    4.8%  v8::internal::Deserializer::DeserializePartial(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSGlobalProxy>, v8::internal::Handle<v8::internal::FixedArray>*)
+      1    2.2%    2.4%  v8::internal::TypeFeedbackVector::ClearSlotsImpl(v8::internal::SharedFunctionInfo*, bool)
+      1    2.2%    2.4%  v8::internal::String::CalculateLineEnds(v8::internal::Handle<v8::internal::String>, bool)
+      1    2.2%    2.4%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateFixedArray(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    2.2%    2.4%  v8::internal::Scanner::Scan()
+      1    2.2%    2.4%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.2%    2.4%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseIdentifierOrStrictReservedWord(bool*, bool*)
+      1    2.2%    2.4%  v8::internal::LGoto::IsControl() const
+      1    2.2%    2.4%  v8::internal::LAllocator::TraceAlloc(char const*, ...)
+      1    2.2%    2.4%  v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+      1    2.2%    2.4%  v8::internal::FlexibleBodyVisitor<v8::internal::MarkCompactMarkingVisitor, v8::internal::FixedArray::BodyDescriptor, void>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      1    2.2%    2.4%  v8::internal::Factory::NewAccessorPair()
+      1    2.2%    2.4%  v8::internal::CompilationPhase::~CompilationPhase()
+      1    2.2%    2.4%  v8::internal::CodeStub::GetCode()
+      1    2.2%    2.4%  v8::internal::Assembler::bind_to(v8::internal::Label*, int)
+      1    2.2%    2.4%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    2.2%    2.4%  int v8::internal::BinarySearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int, int, int*)
+      1    2.2%    2.4%  _tmpfile
+      1    2.2%    2.4%  _setsourcefilter
+      1    2.2%    2.4%  _putchar
+      1    2.2%    2.4%  _malloc_zone_malloc
+      1    2.2%    2.4%  _malloc_default_zone
+
+ [Summary]:
+   ticks  total  nonlib   name
+      0    0.0%    0.0%  JavaScript
+     41   89.1%   97.6%  C++
+      3    6.5%    7.1%  GC
+      4    8.7%          Shared libraries
+      1    2.2%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     11   29.7%   23.9%  v8::internal::Builtins::~Builtins()
+     10   27.0%   21.7%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      6   16.2%   13.0%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    8.1%    6.5%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    5.4%    4.3%  v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    5.4%    4.3%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.7%    2.2%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.7%    2.2%  v8::internal::Runtime_NewObject(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.7%    2.2%  v8::internal::Runtime_DefineAccessorPropertyUnchecked(int, v8::internal::Object**, v8::internal::Isolate*)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+     10   21.7%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+     10  100.0%    v8::internal::Builtins::~Builtins()
+     10  100.0%      LazyCompile: ~runInThisContext node.js:903:28
+     10  100.0%        LazyCompile: ~NativeModule.compile node.js:984:44
+     10  100.0%          LazyCompile: ~NativeModule.require node.js:918:34
+      2   20.0%            LazyCompile: ~startup node.js:13:19
+      2   20.0%            Function: ~<anonymous> stream.js:1:11
+      2   20.0%            Function: ~<anonymous> module.js:1:11
+      1   10.0%            LazyCompile: ~startup.globalVariables node.js:212:37
+      1   10.0%            LazyCompile: ~startup.globalTimeouts node.js:222:36
+      1   10.0%            Function: ~<anonymous> buffer.js:1:11
+      1   10.0%            Function: ~<anonymous> assert.js:1:11
+
+      8   17.4%  ___mkfifo_extended
+      3   37.5%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   33.3%      LazyCompile: ~startup.processConfig node.js:287:35
+      1  100.0%        LazyCompile: ~startup node.js:13:19
+      1  100.0%          Function: ~<anonymous> node.js:10:10
+      1   33.3%      LazyCompile: ~ToPropertyDescriptor native v8natives.js:237:30
+      1  100.0%        LazyCompile: ~defineProperty native v8natives.js:766:30
+      1  100.0%          LazyCompile: ~captureStackTrace native messages.js:709:30
+      1  100.0%            LazyCompile: Error native messages.js:660:21
+      1   33.3%      LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%        LazyCompile: ~startup.globalVariables node.js:212:37
+      1  100.0%          LazyCompile: ~startup node.js:13:19
+      1  100.0%            Function: ~<anonymous> node.js:10:10
+      1   12.5%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~PropertyDescriptor_SetConfigurable native v8natives.js:346:44
+      1  100.0%        LazyCompile: ~ToPropertyDescriptor native v8natives.js:237:30
+      1  100.0%          LazyCompile: ~defineProperty native v8natives.js:766:30
+      1  100.0%            Function: ~<anonymous> fs.js:1:11
+      1   12.5%    v8::internal::Runtime_NewObject(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%        LazyCompile: ~startup node.js:13:19
+      1  100.0%          Function: ~<anonymous> node.js:10:10
+      1   12.5%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~addListener events.js:204:58
+      1  100.0%        LazyCompile: ~startup.processSignalHandlers node.js:817:43
+      1  100.0%          LazyCompile: ~startup node.js:13:19
+      1  100.0%            Function: ~<anonymous> node.js:10:10
+      1   12.5%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~CallSiteToString native messages.js:432:26
+      1  100.0%        LazyCompile: FormatStackTrace native messages.js:568:26
+      1  100.0%          LazyCompile: ~aU native messages.js:618:16
+
+      3    6.5%  /usr/local/bin/node
+      2   66.7%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   50.0%      LazyCompile: ~match native string.js:122:23
+      1  100.0%        LazyCompile: ~<anonymous> node.js:950:58
+      1  100.0%          LazyCompile: ~InnerArraySome native array.js:967:24
+      1  100.0%            LazyCompile: ~some native array.js:987:19
+      1   50.0%      LazyCompile: ~DefineObjectProperty native v8natives.js:464:30
+      1  100.0%        LazyCompile: ~DefineOwnProperty native v8natives.js:633:27
+      1  100.0%          LazyCompile: ~defineProperty native v8natives.js:766:30
+      1  100.0%            Function: ~<anonymous> events.js:1:11
+      1   33.3%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~exports._deprecate internal/util.js:40:30
+      1  100.0%        LazyCompile: exports.deprecate internal/util.js:10:29
+      1  100.0%          Function: ~<anonymous> buffer.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile node.js:984:44
+
+      2    4.3%  v8::internal::Deserializer::DeserializePartial(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSGlobalProxy>, v8::internal::Handle<v8::internal::FixedArray>*)
+
+      1    2.2%  v8::internal::TypeFeedbackVector::ClearSlotsImpl(v8::internal::SharedFunctionInfo*, bool)
+
+      1    2.2%  v8::internal::String::CalculateLineEnds(v8::internal::Handle<v8::internal::String>, bool)
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~startup.setupProcessObject node.js:181:40
+      1  100.0%        LazyCompile: ~startup node.js:13:19
+      1  100.0%          Function: ~<anonymous> node.js:10:10
+
+      1    2.2%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateFixedArray(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+
+      1    2.2%  v8::internal::Scanner::Scan()
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~InstallFunctions native prologue.js:48:26
+      1  100.0%        Function: ~<anonymous> native harmony-object.js:2:10
+
+      1    2.2%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%    v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~split native string.js:424:23
+      1  100.0%        LazyCompile: ~startup.processConfig node.js:287:35
+      1  100.0%          LazyCompile: ~startup node.js:13:19
+      1  100.0%            Function: ~<anonymous> node.js:10:10
+
+      1    2.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseIdentifierOrStrictReservedWord(bool*, bool*)
+
+      1    2.2%  v8::internal::LGoto::IsControl() const
+      1  100.0%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Revive native json.js:19:16
+      1  100.0%        LazyCompile: ~Revive native json.js:19:16
+      1  100.0%          LazyCompile: ~Revive native json.js:19:16
+      1  100.0%            LazyCompile: ~parse native json.js:43:19
+
+      1    2.2%  v8::internal::LAllocator::TraceAlloc(char const*, ...)
+      1  100.0%    v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Revive native json.js:19:16
+      1  100.0%        LazyCompile: ~Revive native json.js:19:16
+      1  100.0%          LazyCompile: ~parse native json.js:43:19
+      1  100.0%            LazyCompile: ~startup.processConfig node.js:287:35
+
+      1    2.2%  v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+      1  100.0%    v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~NativeModule.cache node.js:997:42
+      1  100.0%        LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%          Function: ~<anonymous> stream.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile node.js:984:44
+
+      1    2.2%  v8::internal::FlexibleBodyVisitor<v8::internal::MarkCompactMarkingVisitor, v8::internal::FixedArray::BodyDescriptor, void>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+
+      1    2.2%  v8::internal::Factory::NewAccessorPair()
+      1  100.0%    v8::internal::Runtime_DefineAccessorPropertyUnchecked(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~DefineObjectProperty native v8natives.js:464:30
+      1  100.0%        LazyCompile: ~DefineOwnProperty native v8natives.js:633:27
+      1  100.0%          LazyCompile: ~__defineGetter__ native v8natives.js:135:28
+      1  100.0%            LazyCompile: ~startup.processStdio node.js:660:34
+
+      1    2.2%  v8::internal::CompilationPhase::~CompilationPhase()
+      1  100.0%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~GetColumnNumber native messages.js:165:25
+
+      1    2.2%  v8::internal::CodeStub::GetCode()
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~GetLineNumber native messages.js:157:23
+
+      1    2.2%  v8::internal::Assembler::bind_to(v8::internal::Label*, int)
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      Function: ~<anonymous> node.js:10:10
+
+      1    2.2%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%    v8::internal::Builtins::~Builtins()
+      1  100.0%      Function: ~<anonymous> fs.js:1:11
+      1  100.0%        LazyCompile: ~NativeModule.compile node.js:984:44
+      1  100.0%          LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%            Function: ~<anonymous> module.js:1:11
+
+      1    2.2%  int v8::internal::BinarySearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int, int, int*)
+      1  100.0%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~PropertyDescriptor native v8natives.js:284:28
+      1  100.0%        LazyCompile: ~ToPropertyDescriptor native v8natives.js:237:30
+      1  100.0%          LazyCompile: ~defineProperty native v8natives.js:766:30
+      1  100.0%            Function: ~<anonymous> events.js:1:11
+
+      1    2.2%  _tmpfile
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~DefineObjectProperty native v8natives.js:464:30
+      1  100.0%        LazyCompile: ~DefineOwnProperty native v8natives.js:633:27
+      1  100.0%          LazyCompile: ~defineProperties native v8natives.js:801:32
+      1  100.0%            LazyCompile: ~create native v8natives.js:757:22
+
+      1    2.2%  _setsourcefilter
+      1  100.0%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      Function: ~<anonymous> assert.js:1:11
+      1  100.0%        LazyCompile: ~NativeModule.compile node.js:984:44
+      1  100.0%          LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%            Function: ~<anonymous> timers.js:1:11
+
+      1    2.2%  _putchar
+      1  100.0%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~PropertyDescriptor_HasSetter native v8natives.js:373:50
+      1  100.0%        LazyCompile: ~IsAccessorDescriptor native v8natives.js:186:30
+      1  100.0%          LazyCompile: ~IsInconsistentDescriptor native v8natives.js:198:34
+      1  100.0%            LazyCompile: ~ToPropertyDescriptor native v8natives.js:237:30
+
+      1    2.2%  _malloc_zone_malloc
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~some native array.js:987:19
+      1  100.0%        Function: ~<anonymous> node.js:10:10
+
+      1    2.2%  _malloc_default_zone
+
+      1    2.2%  UNKNOWN
+
+      1    2.2%  /usr/lib/system/libsystem_pthread.dylib
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Module._resolveLookupPaths module.js:223:38
+      1  100.0%        LazyCompile: ~Module._resolveFilename module.js:325:35
+      1  100.0%          LazyCompile: Module._load module.js:285:24
+      1  100.0%            LazyCompile: ~Module.runMain module.js:445:26
+

@@ -80,12 +80,17 @@ var benchmarkSort = function(arrSize){
 //	console.log("Here's the sorted array: %j", arr);
 	
 	
-	var arr = helpers.generateArray(size);
-	var args = [arr];
+	var arr1 = helpers.generateArray(size);
+	var args = [arr1];
 	var jsres = benchmark(helpers.sort, args, 10);
+	
+	var arr2 = helpers.generateTypedArray(size);
+	var args = [arr2];
+	var cres2 = benchmark(add.typed_sort, args, 10);
 //	console.log("Here's the sorted array: %j", arr);
 	return {
 		c: cres,
+		c_t: cres2,
 		js: jsres
 	};
 	
@@ -128,9 +133,12 @@ var benchmarkOptimization = function(){
 var toConsole = function(results){
 	console.log("JS time: %s msec", results.js);
 	console.log("C time: %s msec", results.c);
+	if(typeof results.c_t != 'undefined')
+		console.log("Typed C time: %s msec", results.c_t);
 	
 	if(typeof results.nan != 'undefined')
 		console.log("Nan time: %s msec", results.nan);
+	
 	
 }
 

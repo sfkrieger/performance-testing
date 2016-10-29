@@ -88,7 +88,7 @@ void TypedSort(const FunctionCallbackInfo<Value>& args) {
 		return;
 	}
 
-	Handle<TypedArray> arr = Handle<Uint8Array>::Cast(args[0]);
+	Handle<TypedArray> arr = Handle<Uint16Array>::Cast(args[0]);
 	int size = arr->Length();
 	double other_arr[size];
 	for (int i = 0; i < size; i++){
@@ -99,7 +99,6 @@ void TypedSort(const FunctionCallbackInfo<Value>& args) {
 	qsort(other_arr, size, sizeof(other_arr[0]), compare);
 	Handle<Array> res = Array::New(isolate, size);
 	for (int i = 0; i < size; ++i) {
-	     printf ("I val: %f\n",other_arr[i]);
 		res->Set(i, Number::New(isolate, other_arr[i]));
 	}
 

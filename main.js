@@ -24,7 +24,7 @@ console.log(" ----- Cost for sorting 100000 -------");
 add.toConsole(add.benchmarkSort(100000));
 
 
-console.log(" ----- Creating the object ------")
+//console.log(" ----- Creating the object ------")
 //add.justCreate();
 //add.toConsole(add.benchmarkCreate());
 
