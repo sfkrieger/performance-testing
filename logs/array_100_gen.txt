@@ -1,0 +1,215 @@
+Statistical profiling result from isolate-0x101805000-v8.log, (37 ticks, 1 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+      2    5.4%          /usr/local/bin/node
+      1    2.7%          /usr/lib/system/libsystem_platform.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+
+ [C++]:
+   ticks  total  nonlib   name
+      9   24.3%   26.5%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+      2    5.4%    5.9%  v8::internal::Assembler::pushq(v8::internal::Register)
+      1    2.7%    2.9%  v8::internal::Variable::Variable(v8::internal::Scope*, v8::internal::AstRawString const*, v8::internal::VariableMode, v8::internal::Variable::Kind, v8::internal::InitializationFlag, v8::internal::MaybeAssignedFlag)
+      1    2.7%    2.9%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.7%    2.9%  v8::internal::PointersUpdatingVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+      1    2.7%    2.9%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseAndClassifyIdentifier(v8::internal::ExpressionClassifier*, bool*)
+      1    2.7%    2.9%  v8::internal::PagedSpace::AllocateRawUnaligned(int)
+      1    2.7%    2.9%  v8::internal::NamedStoreHandlerCompiler::GenerateRestoreName(v8::internal::Label*, v8::internal::Handle<v8::internal::Name>)
+      1    2.7%    2.9%  v8::internal::MemoryAllocator::AllocateChunk(long, long, v8::internal::Executability, v8::internal::Space*)
+      1    2.7%    2.9%  v8::internal::LoadIC::UpdateCaches(v8::internal::LookupIterator*)
+      1    2.7%    2.9%  v8::internal::LAllocator::Use(v8::internal::LifetimePosition, v8::internal::LifetimePosition, v8::internal::LOperand*, v8::internal::LOperand*)
+      1    2.7%    2.9%  v8::internal::LAllocator::BuildLiveRanges()
+      1    2.7%    2.9%  v8::internal::IC::UpdateState(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+      1    2.7%    2.9%  v8::internal::FullCodeGenerator::VisitIfStatement(v8::internal::IfStatement*)
+      1    2.7%    2.9%  v8::internal::FullCodeGenerator::VisitForEffect(v8::internal::Expression*)
+      1    2.7%    2.9%  v8::internal::Factory::NewCode(v8::internal::CodeDesc const&, unsigned int, v8::internal::Handle<v8::internal::Object>, bool, bool, int, bool)
+      1    2.7%    2.9%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    2.7%    2.9%  node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+      1    2.7%    2.9%  int v8::internal::FlexibleBodyVisitor<v8::internal::NewSpaceScavenger, v8::internal::JSObject::BodyDescriptor, int>::VisitSpecialized<56>(v8::internal::Map*, v8::internal::HeapObject*)
+      1    2.7%    2.9%  bool v8::internal::CompiledReplacement::ParseReplacementPattern<unsigned char const>(v8::internal::ZoneList<v8::internal::CompiledReplacement::ReplacementPart>*, v8::internal::Vector<unsigned char const>, int, int, v8::internal::Zone*)
+      1    2.7%    2.9%  _vfprintf_l
+      1    2.7%    2.9%  _malloc_zone_malloc
+      1    2.7%    2.9%  ___fix_locale_grouping_str
+      1    2.7%    2.9%  ___cxa_free_exception
+
+ [Summary]:
+   ticks  total  nonlib   name
+      0    0.0%    0.0%  JavaScript
+     33   89.2%   97.1%  C++
+      3    8.1%    8.8%  GC
+      3    8.1%          Shared libraries
+      1    2.7%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     11   39.3%   29.7%  v8::internal::Builtins::~Builtins()
+      7   25.0%   18.9%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      3   10.7%    8.1%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      3   10.7%    8.1%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    3.6%    2.7%  v8::internal::Runtime_ToBooleanIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    3.6%    2.7%  v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    3.6%    2.7%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    3.6%    2.7%  v8::internal::Runtime_CompareIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+      9   24.3%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+      9  100.0%    v8::internal::Builtins::~Builtins()
+      9  100.0%      LazyCompile: ~runInThisContext node.js:903:28
+      9  100.0%        LazyCompile: ~NativeModule.compile node.js:984:44
+      9  100.0%          LazyCompile: ~NativeModule.require node.js:918:34
+      2   22.2%            LazyCompile: ~startup node.js:13:19
+      2   22.2%            Function: ~<anonymous> module.js:1:11
+      1   11.1%            LazyCompile: ~startup.globalTimeouts node.js:222:36
+      1   11.1%            Function: ~<anonymous> stream.js:1:11
+      1   11.1%            Function: ~<anonymous> fs.js:1:11
+      1   11.1%            Function: ~<anonymous> buffer.js:1:11
+      1   11.1%            Function: ~<anonymous> assert.js:1:11
+
+      2    5.4%  v8::internal::Assembler::pushq(v8::internal::Register)
+      1   50.0%    v8::internal::Runtime_CompareIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~MapFindEntry native collection.js:41:22
+      1  100.0%        LazyCompile: ~get native collection.js:245:16
+      1  100.0%          LazyCompile: ~stat module.js:26:14
+      1  100.0%            LazyCompile: ~Module._findPath module.js:142:28
+
+      2    5.4%  /usr/local/bin/node
+      1   50.0%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~fs.Stats fs.js:109:20
+      1  100.0%        node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+      1  100.0%          LazyCompile: ~fs.lstatSync fs.js:885:24
+      1  100.0%            LazyCompile: ~realpathSync fs.js:1458:40
+
+      1    2.7%  v8::internal::Variable::Variable(v8::internal::Scope*, v8::internal::AstRawString const*, v8::internal::VariableMode, v8::internal::Variable::Kind, v8::internal::InitializationFlag, v8::internal::MaybeAssignedFlag)
+
+      1    2.7%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      1  100.0%        Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:380:37
+      1  100.0%            LazyCompile: ~Module._extensions..js module.js:420:37
+
+      1    2.7%  v8::internal::PointersUpdatingVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+
+      1    2.7%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseAndClassifyIdentifier(v8::internal::ExpressionClassifier*, bool*)
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~start fs.js:1481:17
+      1  100.0%        LazyCompile: ~realpathSync fs.js:1458:40
+      1  100.0%          LazyCompile: ~toRealPath module.js:125:20
+      1  100.0%            LazyCompile: ~Module._findPath module.js:142:28
+
+      1    2.7%  v8::internal::PagedSpace::AllocateRawUnaligned(int)
+
+      1    2.7%  v8::internal::NamedStoreHandlerCompiler::GenerateRestoreName(v8::internal::Label*, v8::internal::Handle<v8::internal::Name>)
+      1  100.0%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~DoConstructRegExp native regexp.js:20:27
+      1  100.0%        LazyCompile: ~RegExp native regexp.js:36:27
+      1  100.0%          LazyCompile: ~<anonymous> node.js:950:58
+      1  100.0%            LazyCompile: ~InnerArraySome native array.js:967:24
+
+      1    2.7%  v8::internal::MemoryAllocator::AllocateChunk(long, long, v8::internal::Executability, v8::internal::Space*)
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~DefineOwnProperty native v8natives.js:633:27
+      1  100.0%        LazyCompile: ~defineProperty native v8natives.js:766:30
+      1  100.0%          Function: ~<anonymous> events.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile node.js:984:44
+
+      1    2.7%  v8::internal::LoadIC::UpdateCaches(v8::internal::LookupIterator*)
+      1  100.0%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~NativeModule.getCached node.js:942:36
+      1  100.0%        LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%          Function: ~<anonymous> _stream_passthrough.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile node.js:984:44
+
+      1    2.7%  v8::internal::LAllocator::Use(v8::internal::LifetimePosition, v8::internal::LifetimePosition, v8::internal::LOperand*, v8::internal::LOperand*)
+      1  100.0%    v8::internal::Runtime_ToBooleanIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%        LazyCompile: ~startup node.js:13:19
+      1  100.0%          Function: ~<anonymous> node.js:10:10
+
+      1    2.7%  v8::internal::LAllocator::BuildLiveRanges()
+      1  100.0%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Revive native json.js:19:16
+      1  100.0%        LazyCompile: ~Revive native json.js:19:16
+      1  100.0%          LazyCompile: ~Revive native json.js:19:16
+      1  100.0%            LazyCompile: ~parse native json.js:43:19
+
+      1    2.7%  v8::internal::IC::UpdateState(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+      1  100.0%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~DefineObjectProperty native v8natives.js:464:30
+      1  100.0%        LazyCompile: ~DefineOwnProperty native v8natives.js:633:27
+      1  100.0%          LazyCompile: ~__defineGetter__ native v8natives.js:135:28
+      1  100.0%            LazyCompile: ~startup.processStdio node.js:660:34
+
+      1    2.7%  v8::internal::FullCodeGenerator::VisitIfStatement(v8::internal::IfStatement*)
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~posix.dirname path.js:529:25
+      1  100.0%        LazyCompile: ~Module.load module.js:348:33
+      1  100.0%          LazyCompile: Module._load module.js:285:24
+      1  100.0%            LazyCompile: ~Module.runMain module.js:445:26
+
+      1    2.7%  v8::internal::FullCodeGenerator::VisitForEffect(v8::internal::Expression*)
+
+      1    2.7%  v8::internal::Factory::NewCode(v8::internal::CodeDesc const&, unsigned int, v8::internal::Handle<v8::internal::Object>, bool, bool, int, bool)
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~exports.debuglog util.js:60:28
+      1  100.0%        Function: ~<anonymous> timers.js:1:11
+      1  100.0%          LazyCompile: ~NativeModule.compile node.js:984:44
+      1  100.0%            LazyCompile: ~NativeModule.require node.js:918:34
+
+      1    2.7%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%    v8::internal::Builtins::~Builtins()
+      1  100.0%      Function: ~<anonymous> node.js:10:10
+
+      1    2.7%  node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+      1  100.0%    v8::internal::Builtins::~Builtins()
+      1  100.0%      LazyCompile: ~fs.openSync fs.js:581:23
+      1  100.0%        LazyCompile: fs.readFileSync fs.js:417:27
+      1  100.0%          LazyCompile: ~Module._extensions..js module.js:420:37
+      1  100.0%            LazyCompile: ~Module.load module.js:348:33
+
+      1    2.7%  int v8::internal::FlexibleBodyVisitor<v8::internal::NewSpaceScavenger, v8::internal::JSObject::BodyDescriptor, int>::VisitSpecialized<56>(v8::internal::Map*, v8::internal::HeapObject*)
+
+      1    2.7%  bool v8::internal::CompiledReplacement::ParseReplacementPattern<unsigned char const>(v8::internal::ZoneList<v8::internal::CompiledReplacement::ReplacementPart>*, v8::internal::Vector<unsigned char const>, int, int, v8::internal::Zone*)
+      1  100.0%    v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~replace native string.js:152:23
+      1  100.0%        LazyCompile: ~startup.processConfig node.js:287:35
+      1  100.0%          LazyCompile: ~startup node.js:13:19
+      1  100.0%            Function: ~<anonymous> node.js:10:10
+
+      1    2.7%  _vfprintf_l
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~startup.setupProcessObject node.js:181:40
+      1  100.0%        LazyCompile: ~startup node.js:13:19
+      1  100.0%          Function: ~<anonymous> node.js:10:10
+
+      1    2.7%  _malloc_zone_malloc
+      1  100.0%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Revive native json.js:19:16
+      1  100.0%        LazyCompile: ~Revive native json.js:19:16
+      1  100.0%          LazyCompile: ~Revive native json.js:19:16
+      1  100.0%            LazyCompile: ~parse native json.js:43:19
+
+      1    2.7%  ___fix_locale_grouping_str
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~startup node.js:13:19
+      1  100.0%        Function: ~<anonymous> node.js:10:10
+
+      1    2.7%  ___cxa_free_exception
+      1  100.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Module._extensions..js module.js:420:37
+      1  100.0%        LazyCompile: ~Module.load module.js:348:33
+      1  100.0%          LazyCompile: Module._load module.js:285:24
+      1  100.0%            LazyCompile: ~Module.runMain module.js:445:26
+
+      1    2.7%  UNKNOWN
+
+      1    2.7%  /usr/lib/system/libsystem_platform.dylib
+

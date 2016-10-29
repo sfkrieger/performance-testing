@@ -59,7 +59,6 @@ void Sort(const FunctionCallbackInfo<Value>& args) {
 
 	Handle<Array> arr = Handle<Array>::Cast(args[0]);
 	int size = arr->Length();
-//	printf("BEGIN ------- SIZE %i -------------", size);
 	double other_arr[size];
 	for (int i = 0; i < size; i++){
 		other_arr[i] = arr->Get(i)->NumberValue();
@@ -70,6 +69,37 @@ void Sort(const FunctionCallbackInfo<Value>& args) {
 	Handle<Array> res = Array::New(isolate, size);
 	for (int i = 0; i < size; ++i) {
 //	     printf ("I val: %f\n",other_arr[i]);
+		res->Set(i, Number::New(isolate, other_arr[i]));
+	}
+
+	args.GetReturnValue().Set(res);
+
+}
+
+void TypedSort(const FunctionCallbackInfo<Value>& args) {
+	Isolate* isolate = Isolate::GetCurrent();
+	HandleScope scope(isolate);
+
+	if (args.Length() < 1 || !args[0]->IsTypedArray()) {
+		isolate->ThrowException(
+				Exception::TypeError(
+						String::NewFromUtf8(isolate,
+								"First argument should be an array")));
+		return;
+	}
+
+	Handle<TypedArray> arr = Handle<Uint8Array>::Cast(args[0]);
+	int size = arr->Length();
+	double other_arr[size];
+	for (int i = 0; i < size; i++){
+		other_arr[i] = arr->Get(i)->NumberValue();
+	}
+
+
+	qsort(other_arr, size, sizeof(other_arr[0]), compare);
+	Handle<Array> res = Array::New(isolate, size);
+	for (int i = 0; i < size; ++i) {
+	     printf ("I val: %f\n",other_arr[i]);
 		res->Set(i, Number::New(isolate, other_arr[i]));
 	}
 
@@ -102,36 +132,13 @@ void CreateObject(const FunctionCallbackInfo<Value>& args){
 	  args.GetReturnValue().Set(obj);
 }
 
-//void Sort(const FunctionCallbackInfo<Value>& args) {
-//	  Isolate* isolate = Isolate::GetCurrent();
-//	  HandleScope scope(isolate);
-//
-//  if (args.Length() < 1 || !args[0]->IsArray()) {
-//    isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "First argument should be an array")));
-//    return;
-//  }
-//
-//  Handle<Array> arr = Handle<Array>::Cast(args[0]);
-//  vector<double> v;
-//  for (int i = 0; i < arr->Length(); ++i) {
-//    v.push_back(arr->Get(i)->NumberValue());
-//  }
-//  sort(v.begin(), v.end());
-//  Handle<Array> res = Array::New(isolate, v.size());
-//  for (int i = 0; i < v.size(); ++i) {
-////	 printf("index %i, val %f", i, v[i]);
-//    res->Set(i, Number::New(isolate, v[i]));
-//  }
-//
-//  args.GetReturnValue().Set(res);
-//
-//}
 
 
 void Init(Handle<Object> exports) {
   NODE_SET_METHOD(exports, "add", Add);
   NODE_SET_METHOD(exports, "add_empty", Add);
   NODE_SET_METHOD(exports, "sort", Sort);
+  NODE_SET_METHOD(exports, "typed_sort", TypedSort);
   NODE_SET_METHOD(exports, "create_object", CreateObject);
 }
 

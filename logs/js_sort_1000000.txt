@@ -1,0 +1,239 @@
+Statistical profiling result from isolate-0x101805000-v8.log, (576 ticks, 2 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     27    4.7%          /usr/local/bin/node
+      6    1.0%          /usr/lib/system/libsystem_platform.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+    182   31.6%   33.5%  LazyCompile: *compare /Users/kriegers/workspace/benchmarking/basic-helpers.js:14:17
+    140   24.3%   25.8%  LazyCompile: *QuickSort native array.js:728:26
+     43    7.5%    7.9%  LazyCompile: *generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+     17    3.0%    3.1%  LazyCompile: ~QuickSort native array.js:728:26
+     14    2.4%    2.6%  LazyCompile: *InsertionSort native array.js:701:30
+     11    1.9%    2.0%  KeyedLoadIC: A keyed load IC from the snapshot
+     11    1.9%    2.0%  Handler: An IC handler from the snapshot
+      6    1.0%    1.1%  LazyCompile: *<anonymous> native array.js:722:27
+      5    0.9%    0.9%  LazyCompile: *InnerArraySort.aK native array.js:716:16
+      4    0.7%    0.7%  Stub: StoreFastElementStub
+      3    0.5%    0.6%  Stub: RecordWriteStub {1}
+      1    0.2%    0.2%  Stub: StoreBufferOverflowStub
+      1    0.2%    0.2%  Stub: StoreArrayLiteralElementStub
+      1    0.2%    0.2%  Stub: RecordWriteStub
+      1    0.2%    0.2%  Stub: GrowArrayElementsStub
+      1    0.2%    0.2%  LazyCompile: ~generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      1    0.2%    0.2%  KeyedStoreIC:  {69}
+
+ [C++]:
+   ticks  total  nonlib   name
+     20    3.5%    3.7%  v8::internal::StoreBuffer::ClearFilteringHashSets()
+      8    1.4%    1.5%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+      7    1.2%    1.3%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      7    1.2%    1.3%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::PromoteObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      5    0.9%    0.9%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0>::VisitSpecialized<16>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      5    0.9%    0.9%  v8::internal::Heap::AllocateEmptyFixedTypedArray(v8::internal::ExternalArrayType)
+      4    0.7%    0.7%  v8::internal::PagedSpace::AllocateRawUnaligned(int)
+      4    0.7%    0.7%  v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+      3    0.5%    0.6%  v8::internal::Factory::NewHeapNumber(double, v8::internal::MutableMode, v8::internal::PretenureFlag)
+      2    0.3%    0.4%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.3%    0.4%  ___mkfifo_extended
+      1    0.2%    0.2%  v8::internal::StringTable::LookupString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+      1    0.2%    0.2%  v8::internal::StoreBuffer::Filter(int)
+      1    0.2%    0.2%  v8::internal::StaticMarkingVisitor<v8::internal::IncrementalMarkingMarkingVisitor>::VisitSharedFunctionInfo(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.2%    0.2%  v8::internal::SemiSpace::GrowTo(int)
+      1    0.2%    0.2%  v8::internal::SeededNumberDictionary::AddNumberEntry(v8::internal::Handle<v8::internal::SeededNumberDictionary>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDetails, bool)
+      1    0.2%    0.2%  v8::internal::ScopeInfo::ContextLength()
+      1    0.2%    0.2%  v8::internal::Scope::Scope(v8::internal::Zone*, v8::internal::Scope*, v8::internal::ScopeType, v8::internal::AstValueFactory*, v8::internal::FunctionKind)
+      1    0.2%    0.2%  v8::internal::Scanner::~Scanner()
+      1    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseBinaryExpression(int, bool, v8::internal::ExpressionClassifier*, bool*)
+      1    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseAndClassifyIdentifier(v8::internal::ExpressionClassifier*, bool*)
+      1    0.2%    0.2%  v8::internal::Operand::Operand(v8::internal::Register, int)
+      1    0.2%    0.2%  v8::internal::MemoryAllocator::AllocateChunk(long, long, v8::internal::Executability, v8::internal::Space*)
+      1    0.2%    0.2%  v8::internal::MarkCompactCollector::ProcessAndClearWeakCells()
+      1    0.2%    0.2%  v8::internal::MacroAssembler::Push(v8::internal::Immediate)
+      1    0.2%    0.2%  v8::internal::LAllocator::IsBlockBoundary(v8::internal::LifetimePosition)
+      1    0.2%    0.2%  v8::internal::JSObject::ValidateElements(v8::internal::Handle<v8::internal::JSObject>)
+      1    0.2%    0.2%  v8::internal::JSObject::MigrateFastToFast(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>)
+      1    0.2%    0.2%  v8::internal::IncrementalMarkingMarkingVisitor::VisitFixedArrayIncremental(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.2%    0.2%  v8::internal::IC::UpdateState(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+      1    0.2%    0.2%  v8::internal::FullCodeGenerator::EmitFastOneByteArrayJoin(v8::internal::CallRuntime*)
+      1    0.2%    0.2%  v8::internal::Factory::CopyFixedDoubleArray(v8::internal::Handle<v8::internal::FixedDoubleArray>)
+      1    0.2%    0.2%  v8::internal::Deserializer::DeserializePartial(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSGlobalProxy>, v8::internal::Handle<v8::internal::FixedArray>*)
+      1    0.2%    0.2%  v8::internal::CodeStubGraphBuilder<v8::internal::RegExpConstructResultStub>::BuildCodeStub()
+      1    0.2%    0.2%  v8::internal::CodeStub::FindCodeInCache(v8::internal::Code**)
+      1    0.2%    0.2%  v8::internal::CodeGenerator::PrintCode(v8::internal::Handle<v8::internal::Code>, v8::internal::CompilationInfo*)
+      1    0.2%    0.2%  v8::internal::Assembler::emit_mov(v8::internal::Register, v8::internal::Operand const&, int)
+      1    0.2%    0.2%  int v8::internal::StaticNewSpaceVisitor<v8::internal::NewSpaceScavenger>::DataObjectVisitor::VisitSpecialized<16>(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.2%    0.2%  _vfwscanf
+      1    0.2%    0.2%  _sys_icache_invalidate
+      1    0.2%    0.2%  _malloc_zone_malloc
+      1    0.2%    0.2%  _malloc
+      1    0.2%    0.2%  ___cxa_get_globals_fast
+
+ [Summary]:
+   ticks  total  nonlib   name
+    442   76.7%   81.4%  JavaScript
+     99   17.2%   18.2%  C++
+     36    6.3%    6.6%  GC
+     33    5.7%          Shared libraries
+      2    0.3%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     25   34.2%    4.3%  v8::internal::Runtime_ElementsTransitionAndStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     14   19.2%    2.4%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+     11   15.1%    1.9%  v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+     11   15.1%    1.9%  v8::internal::Builtins::~Builtins()
+      3    4.1%    0.5%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    2.7%    0.3%  v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::Runtime_RemoveArrayHoles(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::Runtime_CompileForOnStackReplacement(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    1.4%    0.2%  v8::internal::JSObject::ValidateElements(v8::internal::Handle<v8::internal::JSObject>)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+    182   31.6%  LazyCompile: *compare /Users/kriegers/workspace/benchmarking/basic-helpers.js:14:17
+    147   80.8%    LazyCompile: *QuickSort native array.js:728:26
+    113   76.9%      LazyCompile: *QuickSort native array.js:728:26
+     76   67.3%        LazyCompile: *QuickSort native array.js:728:26
+     53   69.7%          LazyCompile: *QuickSort native array.js:728:26
+     33   62.3%            LazyCompile: *QuickSort native array.js:728:26
+     20   37.7%            LazyCompile: ~QuickSort native array.js:728:26
+     23   30.3%          LazyCompile: ~QuickSort native array.js:728:26
+     23  100.0%            Handler: hasValue_
+     37   32.7%        LazyCompile: ~QuickSort native array.js:728:26
+     37  100.0%          Handler: hasValue_
+     37  100.0%            LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     34   23.1%      LazyCompile: ~QuickSort native array.js:728:26
+     34  100.0%        Handler: hasValue_
+     34  100.0%          LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     34  100.0%            Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     26   14.3%    LazyCompile: ~QuickSort native array.js:728:26
+     26  100.0%      Handler: hasValue_
+     26  100.0%        LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     26  100.0%          Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     26  100.0%            LazyCompile: ~Module._compile module.js:380:37
+      5    2.7%    LazyCompile: *InsertionSort native array.js:701:30
+      5  100.0%      LazyCompile: *QuickSort native array.js:728:26
+      5  100.0%        LazyCompile: *QuickSort native array.js:728:26
+      5  100.0%          LazyCompile: *QuickSort native array.js:728:26
+      5  100.0%            LazyCompile: *QuickSort native array.js:728:26
+      4    2.2%    LazyCompile: *<anonymous> native array.js:722:27
+      3   75.0%      LazyCompile: *QuickSort native array.js:728:26
+      2   66.7%        LazyCompile: *QuickSort native array.js:728:26
+      1   50.0%          LazyCompile: *sort native array.js:903:19
+      1  100.0%            LazyCompile: ~InnerArraySort.aK native array.js:716:16
+      1   50.0%          LazyCompile: *QuickSort native array.js:728:26
+      1  100.0%            LazyCompile: *sort native array.js:903:19
+      1   33.3%        LazyCompile: *InnerArraySort native array.js:688:24
+      1  100.0%          LazyCompile: *sort native array.js:903:19
+      1  100.0%            LazyCompile: *InnerArraySort.aK native array.js:716:16
+      1   25.0%      LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%        LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%          LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%            LazyCompile: ~QuickSort native array.js:728:26
+
+    140   24.3%  LazyCompile: *QuickSort native array.js:728:26
+    123   87.9%    LazyCompile: *QuickSort native array.js:728:26
+     99   80.5%      LazyCompile: *QuickSort native array.js:728:26
+     76   76.8%        LazyCompile: *QuickSort native array.js:728:26
+     60   78.9%          LazyCompile: *QuickSort native array.js:728:26
+     35   58.3%            LazyCompile: *QuickSort native array.js:728:26
+     25   41.7%            LazyCompile: ~QuickSort native array.js:728:26
+     16   21.1%          LazyCompile: ~QuickSort native array.js:728:26
+     16  100.0%            Handler: hasValue_
+     23   23.2%        LazyCompile: ~QuickSort native array.js:728:26
+     23  100.0%          Handler: hasValue_
+     23  100.0%            LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     24   19.5%      LazyCompile: ~QuickSort native array.js:728:26
+     24  100.0%        Handler: hasValue_
+     24  100.0%          LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     24  100.0%            Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     17   12.1%    LazyCompile: ~QuickSort native array.js:728:26
+     17  100.0%      Handler: hasValue_
+     17  100.0%        LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     17  100.0%          Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     17  100.0%            LazyCompile: ~Module._compile module.js:380:37
+
+     43    7.5%  LazyCompile: *generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+     43  100.0%    Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     43  100.0%      LazyCompile: ~Module._compile module.js:380:37
+     43  100.0%        LazyCompile: ~Module._extensions..js module.js:420:37
+     43  100.0%          LazyCompile: ~Module.load module.js:348:33
+     43  100.0%            LazyCompile: Module._load module.js:285:24
+
+     27    4.7%  /usr/local/bin/node
+      9   33.3%    v8::internal::Runtime_ElementsTransitionAndStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      9  100.0%      LazyCompile: ~QuickSort native array.js:728:26
+      9  100.0%        Handler: hasValue_
+      9  100.0%          LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+      9  100.0%            Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+      5   18.5%    v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      5  100.0%      LazyCompile: *generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      5  100.0%        Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+      5  100.0%          LazyCompile: ~Module._compile module.js:380:37
+      5  100.0%            LazyCompile: ~Module._extensions..js module.js:420:37
+      2    7.4%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   50.0%      LazyCompile: ~set native collection.js:258:16
+      1  100.0%        LazyCompile: ~stat module.js:26:14
+      1  100.0%          LazyCompile: ~Module._findPath module.js:142:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename module.js:325:35
+      1   50.0%      LazyCompile: ~InnerArrayJoin native array.js:321:24
+      1  100.0%        LazyCompile: ~join native array.js:337:19
+      1  100.0%          LazyCompile: ~startup.processConfig node.js:287:35
+      1  100.0%            LazyCompile: ~startup node.js:13:19
+      1    3.7%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~fs.Stats fs.js:109:20
+      1  100.0%        node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+      1  100.0%          LazyCompile: ~fs.lstatSync fs.js:885:24
+      1  100.0%            LazyCompile: ~realpathSync fs.js:1458:40
+      1    3.7%    v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: *QuickSort native array.js:728:26
+      1  100.0%        LazyCompile: *QuickSort native array.js:728:26
+      1  100.0%          LazyCompile: *QuickSort native array.js:728:26
+      1  100.0%            LazyCompile: *QuickSort native array.js:728:26
+      1    3.7%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~Revive native json.js:19:16
+      1  100.0%        LazyCompile: ~Revive native json.js:19:16
+      1  100.0%          LazyCompile: ~Revive native json.js:19:16
+      1  100.0%            LazyCompile: ~parse native json.js:43:19
+      1    3.7%    v8::internal::Builtins::~Builtins()
+      1  100.0%      LazyCompile: ~generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      1  100.0%        Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:380:37
+      1  100.0%            LazyCompile: ~Module._extensions..js module.js:420:37
+
+     20    3.5%  v8::internal::StoreBuffer::ClearFilteringHashSets()
+      1    5.0%    v8::internal::Runtime_ElementsTransitionAndStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%        Handler: hasValue_
+      1  100.0%          LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+      1  100.0%            Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+
+     17    3.0%  LazyCompile: ~QuickSort native array.js:728:26
+     17  100.0%    Handler: hasValue_
+     17  100.0%      LazyCompile: ~sort /Users/kriegers/workspace/benchmarking/basic-helpers.js:10:14
+     17  100.0%        Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     17  100.0%          LazyCompile: ~Module._compile module.js:380:37
+     17  100.0%            LazyCompile: ~Module._extensions..js module.js:420:37
+
+     14    2.4%  LazyCompile: *InsertionSort native array.js:701:30
+     14  100.0%    LazyCompile: *QuickSort native array.js:728:26
+     13   92.9%      LazyCompile: *QuickSort native array.js:728:26
+     13  100.0%        LazyCompile: *QuickSort native array.js:728:26
+     13  100.0%          LazyCompile: *QuickSort native array.js:728:26
+     13  100.0%            LazyCompile: *QuickSort native array.js:728:26
+      1    7.1%      LazyCompile: *InnerArraySort native array.js:688:24
+      1  100.0%        LazyCompile: *sort native array.js:903:19
+      1  100.0%          LazyCompile: *InnerArraySort.aK native array.js:716:16
+      1  100.0%            LazyCompile: *QuickSort native array.js:728:26
+

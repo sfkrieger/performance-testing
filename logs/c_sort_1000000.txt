@@ -1,0 +1,125 @@
+Statistical profiling result from isolate-0x101805000-v8.log, (492 ticks, 317 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     15    3.0%          /usr/local/bin/node
+      9    1.8%          /usr/lib/system/libsystem_platform.dylib
+      1    0.2%          /usr/lib/system/libsystem_kernel.dylib
+      1    0.2%          /usr/lib/system/libsystem_c.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     41    8.3%    8.8%  LazyCompile: *generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      1    0.2%    0.2%  Stub: GrowArrayElementsStub
+      1    0.2%    0.2%  LazyCompile: ~Revive native json.js:19:16
+
+ [C++]:
+   ticks  total  nonlib   name
+     23    4.7%    4.9%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::PromoteObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+     15    3.0%    3.2%  v8::internal::IncrementalMarking::BlackToGreyAndUnshift(v8::internal::HeapObject*, v8::internal::MarkBit)
+     15    3.0%    3.2%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+     10    2.0%    2.1%  v8::internal::PagedSpace::AllocateRawUnaligned(int)
+      9    1.8%    1.9%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+      3    0.6%    0.6%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0>::VisitSpecialized<16>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      3    0.6%    0.6%  int v8::internal::StaticNewSpaceVisitor<v8::internal::NewSpaceScavenger>::DataObjectVisitor::VisitSpecialized<16>(v8::internal::Map*, v8::internal::HeapObject*)
+      3    0.6%    0.6%  _malloc_zone_malloc
+      2    0.4%    0.4%  v8::internal::IncrementalMarking::UpdateMarkingDequeAfterScavenge()
+      2    0.4%    0.4%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.4%    0.4%  ___mkfifo_extended
+      1    0.2%    0.2%  v8::internal::TransitionArray::GetPrototypeTransitions(v8::internal::Map*)
+      1    0.2%    0.2%  v8::internal::StringTable::LookupString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+      1    0.2%    0.2%  v8::internal::Scanner::ScanString()
+      1    0.2%    0.2%  v8::internal::Scanner::Scan()
+      1    0.2%    0.2%  v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseAndClassifyIdentifier(v8::internal::ExpressionClassifier*, bool*)
+      1    0.2%    0.2%  v8::internal::Map::CopyForPreventExtensions(v8::internal::Handle<v8::internal::Map>, PropertyAttributes, v8::internal::Handle<v8::internal::Symbol>, char const*)
+      1    0.2%    0.2%  v8::internal::InnerPointerToCodeCache::GetCacheEntry(unsigned char*)
+      1    0.2%    0.2%  v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, unsigned char*)
+      1    0.2%    0.2%  v8::internal::HAliasAnalyzer::Query(v8::internal::HValue*, v8::internal::HValue*)
+      1    0.2%    0.2%  v8::internal::FeedbackNexus::ExtractMaps(v8::internal::List<v8::internal::Handle<v8::internal::Map>, v8::internal::FreeStoreAllocationPolicy>*) const
+      1    0.2%    0.2%  v8::internal::Execution::ToObject(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+      1    0.2%    0.2%  v8::internal::Deserializer::DeserializePartial(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSGlobalProxy>, v8::internal::Handle<v8::internal::FixedArray>*)
+      1    0.2%    0.2%  v8::internal::Code::Relocate(long)
+      1    0.2%    0.2%  _ungetwc_l
+      1    0.2%    0.2%  _tmpfile
+      1    0.2%    0.2%  _tempnam
+      1    0.2%    0.2%  _sys_icache_invalidate
+      1    0.2%    0.2%  __simple_asl_msg_set
+
+ [Summary]:
+   ticks  total  nonlib   name
+     43    8.7%    9.2%  JavaScript
+    106   21.5%   22.7%  C++
+     85   17.3%   18.2%  GC
+     26    5.3%          Shared libraries
+    317   64.4%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     12   27.3%    2.4%  v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+     11   25.0%    2.2%  v8::internal::Builtins::~Builtins()
+      9   20.5%    1.8%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    6.8%    0.6%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    6.8%    0.6%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    4.5%    0.4%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.3%    0.2%  v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.3%    0.2%  v8::internal::Runtime_CompileOptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.3%    0.2%  v8::internal::Runtime_CompileForOnStackReplacement(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    2.3%    0.2%  v8::internal::Runtime_BinaryOpIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+    317   64.4%  UNKNOWN
+    314   99.1%    v8::internal::Builtins::~Builtins()
+    314  100.0%      Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+    314  100.0%        LazyCompile: ~Module._compile module.js:380:37
+    314  100.0%          LazyCompile: ~Module._extensions..js module.js:420:37
+    314  100.0%            LazyCompile: ~Module.load module.js:348:33
+
+     41    8.3%  LazyCompile: *generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+     41  100.0%    Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+     41  100.0%      LazyCompile: ~Module._compile module.js:380:37
+     41  100.0%        LazyCompile: ~Module._extensions..js module.js:420:37
+     41  100.0%          LazyCompile: ~Module.load module.js:348:33
+     41  100.0%            LazyCompile: Module._load module.js:285:24
+
+     23    4.7%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::PromoteObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+
+     15    3.0%  v8::internal::IncrementalMarking::BlackToGreyAndUnshift(v8::internal::HeapObject*, v8::internal::MarkBit)
+
+     15    3.0%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+
+     15    3.0%  /usr/local/bin/node
+      3   20.0%    v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      3  100.0%      LazyCompile: *generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      3  100.0%        Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+      3  100.0%          LazyCompile: ~Module._compile module.js:380:37
+      3  100.0%            LazyCompile: ~Module._extensions..js module.js:420:37
+      3   20.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   33.3%      LazyCompile: ~match native string.js:122:23
+      1  100.0%        LazyCompile: ~<anonymous> node.js:950:58
+      1  100.0%          LazyCompile: ~InnerArraySome native array.js:967:24
+      1  100.0%            LazyCompile: ~some native array.js:987:19
+      1   33.3%      LazyCompile: ~InstallFunctions native prologue.js:48:26
+      1  100.0%        Function: ~<anonymous> native harmony-object.js:2:10
+      1   33.3%      LazyCompile: ~Error.prepareStackTrace /Users/kriegers/workspace/benchmarking/node_modules/bindings/bindings.js:110:38
+      1  100.0%        LazyCompile: FormatStackTrace native messages.js:568:26
+      1  100.0%          LazyCompile: ~aU native messages.js:618:16
+      1  100.0%            LazyCompile: ~getFileName /Users/kriegers/workspace/benchmarking/node_modules/bindings/bindings.js:102:44
+      1    6.7%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      Function: ~<anonymous> _stream_readable.js:1:11
+      1  100.0%        LazyCompile: ~NativeModule.compile node.js:984:44
+      1  100.0%          LazyCompile: ~NativeModule.require node.js:918:34
+      1  100.0%            Function: ~<anonymous> stream.js:1:11
+      1    6.7%    v8::internal::Runtime_CompileOptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+      1  100.0%      LazyCompile: ~generateArray /Users/kriegers/workspace/benchmarking/basic-helpers.js:23:23
+      1  100.0%        Function: ~<anonymous> /Users/kriegers/workspace/benchmarking/new-main.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:380:37
+      1  100.0%            LazyCompile: ~Module._extensions..js module.js:420:37
+
+     10    2.0%  v8::internal::PagedSpace::AllocateRawUnaligned(int)
+

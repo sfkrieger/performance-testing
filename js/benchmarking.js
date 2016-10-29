@@ -3,7 +3,7 @@ var add = require('bindings')('add.node');
 var jsAdd = require("./add.js");
 var helpers = require("./helpers.js");
 
-var NO_TIMES = 100000;
+var NO_TIMES = 1000000;
 var ARR_SIZE = 1000;
 //console.log('This should be eight:', addon.add(3, 5));
 //console.log('This should be eight -- no nan:', add.add(3, 5));
@@ -12,7 +12,7 @@ var ARR_SIZE = 1000;
 
 //---------- RUNNING IN SEQUENCE ------------
 //runs the add function with parameters
-run = function(fn, noTimes, arr){
+var run = function(fn, noTimes, arr){
 	var i;
 	var sum = 0;
 	for(i = 0; i < noTimes; i++){
@@ -26,7 +26,7 @@ run = function(fn, noTimes, arr){
 
 //--------- TIMESTAMPING ------------
 //benchmarks an empty function
-benchmarkEmpty = function(fn, args, times){
+var benchmarkEmpty = function(fn, args, times){
 	var noTimes = (typeof times != 'undefined'? times: NO_TIMES);
 	var start = Date.now();
 	var result = run(fn, noTimes, args);
@@ -34,7 +34,7 @@ benchmarkEmpty = function(fn, args, times){
 	return duration;
 }
 
-benchmark = function(fn, args, times){
+var benchmark = function(fn, args, times){
 	var noTimes = (typeof times != 'undefined'? times: NO_TIMES);
 	var start = Date.now();
 	var result = run(fn, noTimes, args);
@@ -43,8 +43,8 @@ benchmark = function(fn, args, times){
 }
 
 //------- BENCHMARK ADD ----------//
-benchmarkAdd = function(){
-	var args = [1, 2];
+var benchmarkAdd = function(){
+	var args = [Math.random(), Math.random()];
 	var nanres = benchmark(nadd.add, args);
 	var cres = benchmark(add.add, args);
 	var jsresTempVar = benchmark(jsAdd.addTemp, args);
@@ -58,11 +58,11 @@ benchmarkAdd = function(){
 	}
 }
 
-benchmarkEmptyAdd = function(){
+var benchmarkEmptyAdd = function(){
 	var args = [1, 2];
 	var nanres = benchmarkEmpty(nadd.add_empty, args);
 	var cres = benchmarkEmpty(add.add_empty, args);
-	var jsres = benchmarkEmpty(add_empty, args);
+	var jsres = benchmarkEmpty(jsAdd.add_empty, args);
 	
 	return {
 		c : cres,
@@ -72,14 +72,15 @@ benchmarkEmptyAdd = function(){
 }
 
 //------- BENCHMARK SORT ----------//
-benchmarkSort = function(){
-	var arr = helpers.generateArray(ARR_SIZE);
+var benchmarkSort = function(arrSize){
+	var size = arrSize || ARR_SIZE
+	var arr = helpers.generateArray(size);
 	var args = [arr];
 	var cres = benchmark(add.sort, args, 10);
 //	console.log("Here's the sorted array: %j", arr);
 	
 	
-	var arr = helpers.generateArray(ARR_SIZE);
+	var arr = helpers.generateArray(size);
 	var args = [arr];
 	var jsres = benchmark(helpers.sort, args, 10);
 //	console.log("Here's the sorted array: %j", arr);
@@ -90,7 +91,7 @@ benchmarkSort = function(){
 	
 }
 
-justCreate = function(){
+var justCreate = function(){
 	var obj = add.create_object();
 	var props = Object.getOwnPropertyNames(obj);
 	for(var i = 0; i < props.length; i++)
@@ -102,7 +103,7 @@ justCreate = function(){
 		console.log("Name: %s, Value: %s" , props[i], obj[props[i]]);
 }
 
-benchmarkCreate = function(){
+var benchmarkCreate = function(){
 	var cres = benchmark(add.create_object);
 	var jsres = benchmark(helpers.create_object);
 	return {
@@ -111,7 +112,7 @@ benchmarkCreate = function(){
 	};
 }
 
-benchmarkOptimization = function(){
+var benchmarkOptimization = function(){
 
 	var jsregular = benchmark(helpers.create_object)
 	var js = benchmark(helpers.create_object_passing);
@@ -123,7 +124,8 @@ benchmarkOptimization = function(){
 		jsvolley: jsvolley
 	};
 }
-toConsole = function(results){
+
+var toConsole = function(results){
 	console.log("JS time: %s msec", results.js);
 	console.log("C time: %s msec", results.c);
 	
