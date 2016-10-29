@@ -26,7 +26,7 @@ add.toConsole(add.benchmarkSort(100000));
 
 console.log(" ----- Creating the object ------")
 //add.justCreate();
-add.toConsole(add.benchmarkCreate());
+//add.toConsole(add.benchmarkCreate());
 
 //console.log(" ----- Creating the object in JS comparison ------")
 //var optimization = add.benchmarkOptimization();
