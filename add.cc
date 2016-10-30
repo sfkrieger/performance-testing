@@ -90,13 +90,12 @@ void TypedSort(const FunctionCallbackInfo<Value>& args) {
 
 	Handle<TypedArray> arr = Handle<Uint16Array>::Cast(args[0]);
 	int size = arr->Length();
-	double other_arr[size];
+	unsigned short int other_arr[size];
 	for (int i = 0; i < size; i++){
 		other_arr[i] = arr->Get(i)->NumberValue();
 	}
 
-
-	qsort(other_arr, size, sizeof(other_arr[0]), compare);
+	qsort(other_arr, size, sizeof(unsigned short int), compare);
 	Handle<Array> res = Array::New(isolate, size);
 	for (int i = 0; i < size; ++i) {
 		res->Set(i, Number::New(isolate, other_arr[i]));

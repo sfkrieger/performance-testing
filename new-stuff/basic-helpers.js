@@ -46,6 +46,6 @@ function generateArray(arrSize){
 module.exports = {
   add: add,
   sort: sort,
-  generateArray: generateArray
-//  generateArray: generateTypedArray
+  generateArray: generateArray,
+  generateTypedArray: generateTypedArray
 };

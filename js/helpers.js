@@ -7,6 +7,10 @@ var str =  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 var MAX_INT_SIZE = 65535; //2^16 - 1 16 bits, 2 bytes
 
 var randomInt = function(min, max) {
+	if(!max || !min){
+		max = MAX_INT_SIZE;
+		min = 0;
+	}
 	  return Math.random() * (max - min) + min;
 }
 
@@ -94,13 +98,18 @@ var doNothin = function(){
 	return;
 }
 
+var addJS = function(a, b){
+	return a + b;
+}
 
 module.exports = {
 //		compare: compare,
 		generateArray: generateArray,
 		generateTypedArray: generateTypedArray,
 		sort: sort,
+		add: addJS,
 		create_object: create_object,
 		create_object_pcompare: create_object_pcompare,
-		create_object_passing: create_object_passing
+		create_object_passing: create_object_passing,
+		getInt: randomInt
 };
